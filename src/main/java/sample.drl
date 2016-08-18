@@ -1,0 +1,33 @@
+//created on: Aug 17, 2016
+package com.sample.rules
+
+import com.sample.entities.Person;
+
+dialect "java"
+
+rule "Test Age"
+
+    when
+        person : Person( age  < 10 );
+    then
+    	System.out.println("Under 10");
+    	person.setName("Person under 10");
+
+end
+
+rule "Test Male Gender"
+	when
+		person : Person( gender == 'M');
+	then 
+		System.out.println("Male Person");
+		person.setName(person.getName() + " Male Person");
+end
+
+
+rule "Test Female Gender"
+	when
+		person : Person( gender == 'F');
+	then 
+		System.out.println("Female Person");
+		person.setName(person.getName() + " Female Person");
+end
